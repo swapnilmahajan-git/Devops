@@ -1,0 +1,34 @@
+# What is AWS?
+ - Amazon Web Services(AWS) is a cloud services provider, Also known as Infrastructure as a Services(IaaS).
+
+# AWS provides many kind of services as follows :
+
+ 	- Storage 
+	- Computing Power
+	- Databases
+	- Analytics
+	- Networking
+	- Developer Tools
+	- Virtulizations
+	- Security
+
+# AWS Cloud Terminology
+	1) High Availability - we can take data from anywhere
+	2) Fault Tolerant - data is always available on multiple devices.
+	3) Scalability - we can easily and quickly add more servers dependes on requirment.
+	4) Elasticity - we can easily and quickly grow and decrease server dependes on demand.
+
+# What is VPC?
+ - VPC (Virtual Private Cloud) is private section of AWS, where you can place AWS resources, allow and restrict access to them.
+	
+		AWS--->VPC----> EC2, RDS and other services.
+
+# What is EC2?
+ - EC2 as a virtual computer that you can use for whatever you like, it is also called Instance
+
+
+# What is RDS?
+ - RDS is AWS provisioned database service, commonly used for things like storing customer account information and cataloging inventory.
+
+ # What is S3?
+ - Amazon S3 is a massive storage bucket.

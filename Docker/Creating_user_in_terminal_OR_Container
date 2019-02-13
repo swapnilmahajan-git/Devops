@@ -1,0 +1,94 @@
+how to create user on any container or server
+Step1.
+docker run --name server1 -it ubuntu /bin/bash 
+
+THEN new terminal will be open THEN create one user on that container
+----			       ----
+
+Step2. 
+# useradd -m -d /home/gamut -s /bin/bash gamut
+# passwd gamut
+Enter new UNIX password: gamut
+Retype new UNIX password: gamut
+passwd: password updated successfully
+
+
+THEN find the ip of the container
+----
+
+step3.
+# hostname -i
+172.17.0.2 or any
+
+step4.
+# apt-get update
+# apt-get install openssh-server
+
+#service ssh status
+#service ssh start
+
+THEN go to the user directory maens(/home/gamut) 
+----
+
+THEN create one folder here for files and all and apply chmod 777 foldername(Distros)
+----
+
+step5.
+# mkdir Distros or any name
+# cd /home/gamut/ 
+# chmod 777 Distros
+
+===============================================================================================
+
+Now go to that main terminal from where we want to transfer files to created container
+
+Step1.
+$ sudo apt-get update 
+$ sudo apt-get install openssh-server
+
+Step2.
+$ service ssh status
+ ssh is not running THEN start ssh
+
+$ service ssh start
+
+THEN go to the root user using below command
+-----
+
+Step3.
+$ sudo su 
+
+NOW we are in root user THEN check ssh is runnung or not 
+---                     ----
+# service ssh status
+
+THEN go to that directory from where we want to transfer files see below EX.
+----
+
+Step4.
+# cd /home/swapnil/Documents/tar_files_folder# 
+
+THEN apply the below command 
+
+# scp apache-tomcat-8.5.35.tar.gz gamut@172.17.0.2:/home/gamut/Distros
+gamut@172.17.0.2's password: enter password created user(ex. gamut).
+apache-tomcat-8.5.35.tar.gz (getting like this)
+
+THEN check the container file is copy or not got to the directory EX.
+----
+# cd /home/gamut/Distros# ls
+
+apache-tomcat-8.5.35.tar.gz (output is here)
+
+
+
+
+
+
+
+
+
+
+
+
+

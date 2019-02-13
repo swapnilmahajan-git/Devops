@@ -1,0 +1,51 @@
+How To create Local repository?
+
+=> Step 1. $ git init mylocalrepo
+   Step 2. $ cd mylocalrepo
+   Step 3. $ ls 
+   Step 4. $ ls -a (This command is showing .git folder)
+             .(Source area) ..(staging area) .git(it's local repository area).
+   Step 5. $ vim login.java (do some changes in this file as per required)
+   Step 6. $ git status
+   Step 7. $ git add login.java
+   Step 8. $ git commit login.java -m "test file"
+   Step 9. $ git status (After commit do the git status you will get on branch master nothing to commit, working directory clean, 
+			because we can not push to remote repository because this repo is created in local).
+   Step 10. $ ls -a (After commit enter this command you will get below output) and (Try git push after ls -a command)
+             . .. .git login.java
+   Step 11. $ git push
+            fatal: No configured push destination.
+	    Either specify the URL from the command-line or configure a remote repository using
+
+    		git remote add <name> <url>
+
+	    and then push using the remote name
+
+    		git push <name>
+     Note:-(if we want to push this changes we must connect local repository to remote repository by using the below command, but first we must create empty repo by same local repo name into github)
+   Step 12. $ git remote add mylocalrepo  https://github.com/swapnilmahajan-git/mylocalrepo.git(url of the new local repo)
+   Step 13. $ git push mylocalreppo (local repo name)
+            fatal: The current branch master has no upstream branch.
+	    To push the current branch and set the remote as upstream, use
+
+   		 git push --set-upstream mylocalreppo master
+   Step 14. $ git push --set-upstream mylocalreppo master (After this command set username and password git credential and we will get this output)
+            Username for 'https://github.com': swapnilmahajan-git
+	    Password for 'https://swapnilmahajan-git@github.com': 
+            Counting objects: 3, done.
+            Compressing objects: 100% (2/2), done.
+	   Writing objects: 100% (3/3), 303 bytes | 0 bytes/s, done.
+        	Total 3 (delta 0), reused 0 (delta 0)
+		remote: 
+		remote: Create a pull request for 'master' on GitHub by visiting:
+		remote:      https://github.com/swapnilmahajan-git/mylocalreppo/pull/new/master
+		remote: 
+		To https://github.com/swapnilmahajan-git/mylocalreppo.git
+		 * [new branch]      master -> master
+		Branch master set up to track remote branch master from mylocalreppo.
+    Step 15. $ git push (Enter git credentials)
+             Username for 'https://github.com': swapnilmahajan-git
+             Password for 'https://swapnilmahajan-git@github.com': 
+             Everything up-to-date 
+(Note: After Check github.com)
+		

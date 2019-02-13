@@ -1,0 +1,35 @@
+# What is Free Tier Account?
+	- AWS Free-Tier refers to the limited free use of AWS services.
+	- AWS offers the Free Tier as means for a user to learn,experiment and get hands-on-experience with AWS services.
+	- Almost all AWS services offers some kind of Free Tier usage.
+	- Free Tier is available for 12 months after you create an AWS account.
+	- Some services extend Free Tier usage past 12 months.
+	- Free Tier is only available to new AWS customers.
+	- you can do lot with AWS while only using Free Tier services.
+
+# Free Tier Featured Services
+============================
+	 - EC2 (Elastic cloud compute)
+	 - EBS (Elastic Block Storage)
+	 - S3 (Simple Storage Services)
+	 - RDS (Relational Database service ie. MySql)
+	 - DynamoDB (NoSql Database Service)
+	 - ELB (Elastic Load Balancing)
+	 - SNS (Simple Notification Service)
+	 - Lambda (Serverless Computing)
+	     Many more services availabe in Free Tier account.
+
+# Create an AWS Account
+=======================
+
+Step.1) URL: https://aws.amazon.com/
+Step.2) Click on Sign in to the console
+Step.3) Enter your email address.
+Step.4) Make sure "I am a new user" is selected
+Step.5) complete login credential form.
+Step.6) Select "Company" or "Personal" Account.
+Step.7) Complete rest of the "Contact Information" form
+Step.8) Complete the "payment information" form (you will need valid credit card)
+Step.9) Complete "Identity Verification" form and follow instruction to input the verification PIN number.
+Step.10) Select "support plan" (Select "basic" for no fee/free tier use).
+Step.11) Sign into the AWS Console with your newly created credentials.

@@ -1,0 +1,79 @@
+
+# Docker volume
+=================
+
+# $ docker pull <mysql-image>
+
+# $ docker inspect <mysql-image> 
+	Note :- Here find out the volume path for mysql. ie. default path is ("volumes": "/var/lib/mysql")
+
+# $ docker container run -d --name <container-name> -e MYSQL_ALLOW_EMPTY_PASSWORD=true <mysql-image>
+
+	Note:- If container will be delated, but in volume all data will be stored.
+
+# $ docker container exec -it <container-name> /bin/bash
+
+# $ docker volumes ls 
+	Note :- This command shows the volume name and info.
+
+# $ docker volume inspect <volume-name>
+	Note:- This command shows the info about volume, on which location container data will be stored.
+
+	[
+    {
+        "CreatedAt": "2019-02-03T12:13:48+05:30",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/mysqlvol/_data",
+        "Name": "mysqlvol",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+
+
+# $ docker container run -d --name <container-name> -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v <volume-name>:/var/lib/mysql <mysql-image>
+
+	Note:- Using this command we can give name to volume, so we can easily find out the which volume is used for specific container. 
+	       we can use same volume for multiple containers.
+	       For development purpose this run command is useful for docker volume. But in production we use create command for creating volume.
+
+# $ go to your root and find the mount path of the volume your all container data will be stored in the location.
+	Ex. # cd /var/lib/docker/volumes/mysqlvol/_data# 
+
+
+# Bind Mounting
+================
+	- Bind Mount is act like bridging between local files access and apps running in containers.
+	- In bind mounts we edit files on our host using native tools.
+	- containers detects changes with hosts files and updates web server.
+	- Maps a host file or directoy to container file or directory
+	- Basically just two locations pointing two the same files.
+	- See, My working file is in my current directory ie. outside the running container and I want to map or execute this file inside container use bind mount. use below command :
+	  
+		$ docker container run -d --name <container-name> -p 8080:80 -v $(pwd):/usr/share/nginx/html <nginx-image>
+                     Note:- you will see the nginx custom image output
+		$ docker container run -d --name <container-name> -p 8080:80 <nginx-image>
+		     Note:- you will see the real nginx default output page., Now open one new terminal and enter into that container using exec command
+		
+		$ docker container exec -it <container-name> bash
+		     Note:- If we are changing the container port then use the above command for enter into that container. 
+	- Now create one file outside the container and run the nginx browser.
+	- Now create one file outside the container and check the file is coming into the container ie. nginx directory or not.
+	- Then write somthing into the outside directory using this command ($ echo "is it me" > filename) and chek to the container nginx directory.
+
+# Real Time Scenario 
+====================
+ 1)Upgrade database in docker, in same volume
+ 	=> First create a container using older version(postger)
+	$ docker container run -d --name <container-name> -v <volume-name>:/var/lib/postgresql/data postgres:9.6.1
+	
+	$ docker container logs -f <container-name>
+		Note:- keep watching on container creation
+	
+	$ docker container -d --name <container-name> -v <volume-name>:/var/lib/postgresql/data postgres:9.6.2
+
+# How to set fixed ipaddress for container
+
+	
+

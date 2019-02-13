@@ -1,0 +1,10 @@
+# What is VPV?
+
+   - A VPC is "Virtual Private Cloud" A private sub-section of AWS that you control, in which you can place AWS resources(such as Ec2 Instance and databases). 
+   - You have full control over who has access to the AWS resources that you place inside your VPC.
+
+ 	Note:- When you create an AWS account, a default VPC is created for you, including standard components that are needed make it functional.
+		1.) Internaet Gateway(IGW). 
+		2.) A Route Table(with predefind routes to the default subnets). 
+		3.) A Network Access Control List(with predefined rules for access). 
+		4.) Subnets to provision AWS resources in (such as Ec2 instances).

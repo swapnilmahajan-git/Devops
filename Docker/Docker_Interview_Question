@@ -1,0 +1,78 @@
+Q1. What are the differences between Docker and VM?
+Q2. What is Docker?
+Q3. What is Docker image?
+Q4. What is Docker container?
+Q5 What is Docker hub?
+Q6. How is Docker different from other container technologies?
+Q7. What is Dockerfile used for?
+Q8. Tell us how you have used Docker in your past position?
+Q9. How to create Docker container?
+Q10. How to stop and restart the Docker container?
+Q11. How far do Docker containers scale?
+Q12. What platforms does Docker run on?
+Q13. Which platform docker not run?
+   => Windows and Mac
+
+Q14. Do I lose my data when the Docker container exits?
+Q15). What, in your opinion, is the most exciting potential use for Docker?
+
+	-The most exciting potential use of Docker that I can think of is its build pipeline. 
+	-Most of the Docker professionals are seen using hyper-scaling with containers, and indeed get a lot of containers on the host that it actually runs on. 
+	-These are also known to be blatantly fast. Most of the development – test build pipeline is completely automated using the Docker framework.
+
+Q16). Why is Docker the new craze in virtualization and cloud computing?
+
+	-Docker is the newest and the latest craze in the world of Virtualization and also Cloud computing because it is an ultra-lightweight containerization app that is brimming with potential to prove 		 its mettle.
+Q17). Why do my services take 10 seconds to recreate or stop?
+
+	-Docker compose stop will attempt to stop a specific Docker container by sending a SIGTERM message. 
+	-Once this message is delivered, it waits for the default timeout period of 10 seconds and once the timeout period is crossed, it then sends out a SIGKILL message to the container – in order to 		 kill it forcefully. 
+	-If you are actually waiting for the timeout period, then it means that the containers are not shutting down on receiving SIGTERM signals / messages.
+
+		In an attempt to solve this issue, the following is what you can do:
+
+		• You can ensure that you are using the JSON form of the CMD and also the ENTRYPOINT in your dockerfile.
+		• Use [“program”, “argument1”, “argument2”] instead of sending it as a plain string as like this – “program argument1 argument2”.
+		• Using the string form, makes Docker run the process using bash that can’t handle signals properly. Compose always uses the JSON form.
+		• If it is possible then modify the application which you intend to run by adding an explicit signal handler for the SIGTERM signal
+		• Also set the stop_signal to a proper signal that the application can understand and also know how to handle it.
+
+Q18). What’s the difference between up, run, and start?
+Q19). What’s the benefit of “Dockerizing?”
+Q20). How many containers can run per host?
+Q21). Will cloud automation overtake containerization any sooner?
+Q22). Is there a way to identify the status of a Docker container?
+Q23). What are the differences between the ‘docker run’ and the ‘docker create’?
+Q24). What are the various states that a Docker container can be in at any given point in time?
+
+	There are four states that a Docker container can be in, at any given point in time. Those states are as given as follows:
+
+	• Running
+	• Paused
+	• Restarting
+	• Exited
+
+Q25). Can you remove a paused container from Docker?
+
+	To answer this question blatantly, No, it is not possible to remove a container from Docker that is just paused. 
+	It is a must that a container should be in the stopped state, before it can be 	removed from the Docker container.
+
+Q26). Is there a possibility that a container can restart all by itself in Docker?
+
+	To answer this question blatantly, No, it is not possible. 
+	The default –restart flag is set to never restart on its own. 
+	If you want to tweak this, then you may give it a try.
+
+Q27) What is the preferred way of removing containers - ‘docker rm -f’ or ‘docker stop’ then followed by a ‘docker rm’?
+
+	The best and the preferred way of removing containers from Docker is to use the ‘docker stop’, 
+	as it will allow sending a SIG_HUP signal to its recipients giving them the time that is required to perform all the finalization and cleanup tasks. 
+	Once this activity is completed, we can then comfortably remove the container using the ‘docker rm’ command from Docker and thereby updating the docker registry as well.
+
+Q28) Difference between Docker Image and container?
+
+	Docker container is the runtime instance of docker image.
+	Docker Image doesnot have a state and its state never changes as it is just set of files whereas docker container has its execution state.
+
+
+

@@ -1,0 +1,155 @@
+1). What is Chef?
+	- Chef is a Configuration mgmnt tool.
+	- Chef is an automation platform that configures and manages the infrastructure. 
+
+
+2.) What is Chef Architecture?
+	Chef Architecture:
+		- workstation
+		- chef server
+		- node
+		- knife
+		- chef-client
+			================
+			workstation: is the computer(typically your machine) where you write your cookbooks and administer your network.
+
+			Chef server: Central repository that contains the cookbooks you write and information about every node it manages.
+
+			Node: is a computer that is managed by a chef server. ex: computer in your QA/Prod environments.
+
+			Knife:  Knife command enables us to communicate with Chef 
+					server from workstation.
+					Knife is an interface between your workstation and 
+					Chef server.
+					Using knife, we can upload cookbooks to the server,
+					and work with node.
+
+
+3). What are the major components of Chef?
+	1. Workstation.
+	2. Chef Server.
+	3. Node.
+	4. Knife.
+	
+
+	
+4). What is a Chef resource and what are its functions?
+	- Resources are building blocks used to define specific parts of infrastructure.
+	- Resource defines actions for Chef to perform.
+		- file
+		- directory
+		- package
+		- service
+		- apt-update
+		- template
+
+
+5). What is a Chef Node and what is its importance?
+	- A Node represents a server and is typically a virtual machine, container instance, or physical server.
+	- ex: computer in your QA/Prod environments.
+
+6). What is a Recipe in Chef?
+	- A Recipe is a collection of Resources that describes a particular configuration or policy. A Recipe describes everything that is required to configure part of a system.
+
+	
+7). What is the difference between a Cookbook and a Recipe in Chef?
+	- A Recipe is a collection of Resources, and primarily configures a software package or some piece of infrastructure. 
+	- A Cookbook groups together Recipes and other information in a way that is more manageable than having just Recipes alone.
+
+8). Are these two Chef recipes the same?
+
+	 package 'httpd'
+	 service 'httpd' do
+	 action [:enable, :start]
+	 end
+
+	&&
+
+	service 'httpd' do
+	action [:enable, :start]
+	end
+	package 'httpd'
+
+		No, they are not. Remember that Chef applies resources in the order they appear. So the first Recipe ensures that the httpd package is installed and then configures the service. 
+		The second Recipe configures the service and then ensures the package is installed.
+
+9). Write a service Resource that stops and then disables the httpd service from starting when the system boots in Chef.
+	- Use the below Resource to stop and disable the httpd service from starting when system boots.
+
+		service 'httpd' do
+		action [:stop, :disable]
+		end
+
+10). How does Chef-apply differ from Chef-client?
+	- Chef-apply is an executable program that runs a single Recipe from the command line. It is a part of the Chef development kit and a great way to explore resources.
+
+		Syntax for Chef-apply is:
+			- chef-apply name_of_recipe.rb
+
+	- Chef-client applies a Cookbook. It is used for production purposes where you typically run Chef-client to apply one or more cookbooks.
+
+
+11). What is the command you use to upload a cookbook to the Chef server?
+	- “knife cookbook upload”.
+
+
+12). What would you set your cookbook’s version to once it is ready to use in production?
+	- According to Semantic Versioning, you should set your cookbook’s version number to 1.0.0 once it is ready to use in production.
+
+
+13). Where can you get reusable cookbooks that are written and maintained by the Chef community?
+	- You can directly answer this question by saying reusable Cookbooks are present at Chef Supermarket, https://supermarket.chef.io.
+
+
+14). How does a Chef Repository work?
+	- Chef Repository as a collection of Cookbooks, roles, environments, data bags and more. 
+	- It is possible to sync the Chef Repository with the Git and a Version Control System in order to improve the performance of it.
+
+
+15). Why are SSL certificates used in Chef?
+	- You need the SSL certificate for the initial configuration of the Chef and for creating the certificate and private keys in Nginx. 
+	- This ensures that the right data can be accessed between the Chef Client and Chef Server.
+
+
+16). What is the significance of a Signed Header?
+	- The Signed Header is needed for the validation of the interaction between the Chef node, server and signed header authentication.
+
+
+17). Explain the run-list in Chef?
+	- The run-list is needed for specifying the Recipes that are needed for running it and the order in which the Recipes will be executed.
+
+		Some of the advantages of run-list include:
+			- It ensures that the Recipes are running in the same order as specified
+			- The node on which the run-list is to be executed has to be specified
+			- It is transferred from the Workstation to Chef Server and the management console.
+
+
+18). What is the importance of Chef starter kit?
+	- The starter kit is needed for creating the configuration files in Chef. 
+	- It gives you the information for interacting with the server and defining the configuration file. 
+	- You can easily download the starter kit and use it at the desired place on the workstation.
+
+
+19). What is the process for updating a Chef Cookbook?
+
+	-There are three ways to apply an updated Cookbook to a node you can mention all or any one:
+
+		- Run knife ssh from your workstation.
+		- SSH directly into your server and run chef-client.
+		- You can also run chef-client as a daemon, or service, to check in with the Chef server on a regular interval, say every 15 or 30 minutes.
+
+
+20). What is the process for bootstrapping in Chef and the information needed?
+	- The hostname or Public IP address of the node
+	- The user name and password for logging into a particular node
+	- Using keys as authentication rather than any login credentials.
+
+
+21). Explain your understanding of Test Kitchen in Chef?
+	- The Test Kitchen in Chef will help you improve the development lifecycle and enables the Cookbooks on the server. 
+	- You can also create different virtual machines in cloud or on-premise.
+
+
+22).Write Cookbook for Tomcat, jdk, maven, deploying war
+
+

@@ -1,0 +1,100 @@
+swapnilmahajan-git
+WelcomeToGit#2
+
+Step 1.
+- git clone https://github.com/swapnilmahajan-git/mavenrepo.git
+- git clone https://github.com/nageshvkn/gamutkart2.git
+- git clone https://github.com/swapnilmahajan-git/gamutkart2.git
+
+Step 2.
+- mvn archetype:generate -DgroupId=com.gamutkart -DartifactId=gamutkart -Dversion=1.0-SNAPSHOT -DinteractiveMode=false
+     => This command created 
+			    src nd pom.xml
+			     |
+			     main nd test 
+
+				or (what is difference between this two coomand )
+
+- mvn archetype:generate -DgroupId=com.gamutdemo -DartifactId=gamutdemo -Dversion=1.0-SNAPSHOT -DinteractiveMode=false -DarchetypeArtifactId=maven-archetype-webapp
+     => => This command created
+				 src nd pom.xml
+                                 |
+				 main
+				  |
+				  resources nd webapp
+
+!#bin/bash
+if [ $ENVIRONMENT = "QA" ];then
+sshpass -p "gamut" scp target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+
+sshpass -p "gamut" ssh  gamut@172.17.0.3 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_191" "/home/gamut/Distros/apache-tomcat-8.5.35/bin/startup.sh"
+
+elif [ $ENVIRONMENT = "SIT" ];then
+sshpass -p "gamut" scp target/gamutkart.war gamut@172.17.0.4:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+
+sshpass -p "gamut" ssh gamut@172.17.0.4 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_191" "/home/gamut/Distros/apache-tomcat-8.5.35/bin/startup.sh"
+fi
+
+
+export JAVA_HOME=/home/gamut/Distros/jdk1.8.0_191
+export M2_HOME=/home/gamut/Distros/apache-maven-3.6.0
+export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
+
+
+
+
+
+
+apply in base machine terminal 
+
+ => swapnil@swapnil-VirtualBox:~/Documents/jenkins-server/apache-tomcat-8.5.35/bin$ sshpass -p "gamut" ssh gamut@172.17.0.2 "/home/gamut/build/workspace/gamutkart4/deploy_from_slave.sh"
+
+apply in o.2 i.e on slave machine
+ =>  root@4b909762d116:/home/gamut/build/workspace/gamutkart4# scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps 
+
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# vim deploy_from_slave.sh
+
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# cat deploy_from_slave.sh
+#!/bin/bash
+echo "Starting the deployment..."
+sshpass -p 'gamut' scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+echo "deployment is done"
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+gamut@172.17.0.3's password: 
+gamutkart.war                                                                                                                                                             100%  147KB  58.2MB/s   00:00    
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# cat deploy_from_slave.sh 
+#!/bin/bash
+echo "Starting the deployment..."
+sshpass -p 'gamut' scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+echo "deployment is done"
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# 
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# 
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# cat deploy_from_slave.sh 
+#!/bin/bash
+echo "Starting the deployment..."
+sshpass -p 'gamut' scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+echo "deployment is done"
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# 
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# cat deploy_from_slave.sh 
+#!/bin/bash
+echo "Starting the deployment..."
+sshpass -p 'gamut' scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+echo "deployment is done"
+root@4b909762d116:/home/gamut/build/workspace/gamutkart4# scp /home/gamut/build/workspace/gamutkart4/target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.35/webapps
+gamut@172.17.0.3's password: 
+gamutkart.war            
+
+
+ENVIRONMENT=$1
+if [ $ENVIRONMENT = "QA" ];then
+        sshpass -p "gamut" scp target/gamutkart.war gamut@172.17.0.3:/home/gamut/Distros/apache-tomcat-8.5.23/webapps
+        sshpass -p "gamut" ssh gamut@172.17.0.3 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_151" "/home/gamut/Distros/apache-tomcat-8.5.23/bin/startup.sh"
+
+elif  [ $ENVIRONMENT = "SIT" ];then
+        sshpass -p "gamut" scp target/gamutkart.war gamut@172.17.0.4:/home/gamut/Distros/apache-tomcat-8.5.23/webapps
+        sshpass -p "gamut" ssh gamut@172.17.0.4 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_151" "/home/gamut/Distros/apache-tomcat-8.5.23/bin/startup.sh"
+echo "deployment has been done!"
+fi
+
+
+

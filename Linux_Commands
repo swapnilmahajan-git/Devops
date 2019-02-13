@@ -1,0 +1,55 @@
+Linux commmand 
+
+	cd - change directory
+	mkdir - make director	
+	wget - 
+	tar - zxvf
+	cp - copy
+	mv - move 
+	rm - remove
+	scp - 
+	chmod - change mode
+	chown - change owner
+	useradd - create new user
+	passwd -change login password
+	ls  - list
+	ls -a - list all files with hidden 
+	vim - improved version vi
+	cat - It shows the content of the files.
+	ps -ef - display status of process is running in background 
+	ctrl + c - stop the running process
+	ctrl + z - kill the running process
+	ctrl + d - logout the running process
+	ctrl + shift + c - it is used for copy the content from terminal
+	ctrl + shift + v - it is used for paste the content from terminal
+	exit - close the terminal
+	ping - check if computer internet is running or not
+	head - display first part of file
+	tail - display last part of file
+	telnet - remote login over network 
+	sudo - allow individual users to have root permission to perform specific tasks.
+	su - login in as another user.
+
+# Run levels in Linux
+	
+	0 -> halt 
+	1 -> Single user
+	2 -> multi-user w/o NFS
+	3 -> multi-usr with NFS -- default
+	4 -> unused 
+	5 -> GUI      -- default
+	6 -> Reboot
+
+ (Note -> 0 and 6 we are not using in production PATH --> /etc/inittab (this is redhat path)
+
+# How to create recursive folder in linux?
+
+	- mkdir -p abc/def/ghi (Note:- -p:- is parent )
+
+
+	
+ 
+
+
+ 
+

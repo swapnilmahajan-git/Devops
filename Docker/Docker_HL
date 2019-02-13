@@ -1,0 +1,796 @@
+		Docker - The Container Virtualization Tool
+	==================================================
+
+Que1). Diff bet'n Physical server, Virtual server and Docker container?
+=>Physical Server :- We are creating one physical server machine with 1TB HDD, CPU and RAM, if we required another multiple server that time we need same configuration machine, 
+  		     that means we will do seprate OS, HDD, RAM, in all machine so the time and cost will be increasing and testing and deployment process will be slow.
+
+=>Virtual Server :- If we are using virtual machine in one Computer, we are installing multiple virtual machine in computer and after install seprate OS and allocating some Storage and Ram.
+                    means we are virtualize the hardware, means we can supply the same hardware to this computer. again the all process will be going on one machine but its taking more time, 
+		    means process will be slow.
+
+=>Docker Container :- If we are using DOCKER, docker also provide virtualization, means install docker in one computer there is no need to install seprate OS,HDD and RAM.
+
+==================================================================
+
+Que2). what is docker?
+=> Docker is containerization tool, Docker is an extension of Linux Containers (LXC): a unique kind of lightweight, 
+   application-centric virtualization that drastically reduces overhead and makes it easier to deploy software on servers. 
+
+==================================================================
+
+Que3). why docker? 
+=> Docker allows systems administrators and developers to build applications that can be run on any Linux distribution or hardware in a virtualized sandbox 
+   without the need to make custom builds for different environments. These features are attracting a lot of big names,
+   and have turned Docker into one of the most successful open source projects of the last year. It seems Docker is here to stay, so what does this mean for Linux?
+
+Que4). who can use it?
+=>Docker has been designed in a way that it can be incorporated into most DevOps applications, including Puppet, Chef, Vagrant, and Ansible, 
+  or it can be used on its own to manage development environments. The primary selling point is that it simplifies many of the tasks typically done by these other applications.
+
+========
+Day-1:
+========
+#
+Diff bet'n Physical server, Virtual server and Docker container.
+
+VM, Docker, usage in realtime
+
+#
+what is docker? why docker? who can use it?
+
+
+#
+Supported Platforms-
+	- Docker is supported on
+		- Linux platforms
+			Ubuntu, RHEL, CentOs..etc.
+		- Windows  
+		- OS X 		
+		  
+	- Cloud Platforms
+		Amazon EC2
+		Rackspace Cloud
+		Google compute Engine..etc.
+		Azure
+
+Note:
+Linux containers can be created on Windows and OS X.
+HOW?- Windows Docker installer contains a tiny Linux virtual machine. Docker creates linux container on top of this tiny Linux VM.
+
+
+Requirements:
+	- 64-bit architecture	  
+	- Linux 3.8 or later Kernel versions
+
+
+#
+Requirements Check:
+- Check Kernel version
+	$ uname -a Or -r
+
+NOTE: Kernel can also be upgraded.
+
+- Check OS name:
+	$ lsb_release -a / -cs
+	$ cat /etc/os-release	
+
+
+Installation Steps:
+===========	==========	
+# Update apt-get cache
+	$ sudo apt-get update
+
+# Install docker dependencies
+	$ sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+# Add GPG key to apt repository
+	$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# Setup Stable repository:
+	$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+	
+# Update apt package index:
+	$ sudo apt-get update
+	
+# Install Latest version of Docker
+	$ sudo apt-get install docker-ce
+
+#
+Installation Check
+sudo docker --version
+
+#
+uninstall docker:
+$ sudo apt-get remove docker-ce
+
+
+=======
+DAY-2
+=======
+#
+Managing docker containers
+===============================
+#
+docker run command:
+- "docker run" command provides all lanuching capabilities for docker to create a container.
+- we use `docker run` to create new containers.
+
+
+# Creating first container
+
+sudo docker run -i -t or -it ubuntu /bin/bash
+
+	-i : opens STDIN from the container
+	-t : tells docker to assign a pseudo-tty to the
+		 container.
+	-it : provides interactive shell or terminal(it).
+	
+	`ubuntu`: is an image and also called as "stock image" or "base image".
+			  This will be downloaded by default from 'Docker hub' for the first
+			  time.
+	
+	/bin/bash: which shell need to be installed in the terminal (shell that run in the terminal)
+
+
+
+# Inspect the new container
+1.
+	# hostname -i (check ip address of created new container using this command)
+        # cd /  
+        # ls (newly created container have own root directory check using this command)
+   	# ps -ef (using this command we can check background process)
+ 
+2.      #cat /etc/hosts (newly created container got own hosts file check using this command)
+
+        What is etc/hosts file?
+        => etc/hosts file contains hostname details ex. root@2d51b0e393f6:/# so this is hostname (2d51b0e393f6)
+        => check hostname by using this command in newly created container (# hostname).
+
+3.      suppose if we want to change hostname of machine newly or any then do the following steps: 
+	# vim /etc/hosts (in this hosts file copy first line ex 127.0.0.1 localhost and paste in that below and rename the loclhost in the second line ex. 127.0.0.1 www.server1.com)
+	THEN
+	# vim /etc/hostname (rename the first line of this file give same name what we are given in the hosts file ex. www.server1.com)
+
+4.	# ifconfig (suppose if we want to check ifconfig command in container so run below command before ifconfig command)
+ 
+	# apt-get update
+	# apt-get install net-tools
+	THEN
+
+5.	# ifconfig
+		observe etho and lo network interfaces with 
+		ip address
+
+6.	# ps -ef
+
+
+#Check which shell we are using within container 
+-  echo $SHELL
+
+#What is SHELL?
+- Open a terminal and type anything in the terminal means it is just a text box so you can type anything and say ENTER and it says COMMAND not found means what, 
+  some program is running in this terminal so  this is not text box more than text box, some program is running that is called SHELL, What SHELL is bash. here bash SHELL is running, 
+  what bash SHELL is doing SHELL take the input from user means you, it will take the input to the kernel and kernel process that command and it will give you result, 
+  so the SHELL act as interface between user and operating system. for Example, pwd command so bash SHELL intrpret this command and it will take this to kernel 
+  and kernel process this request and send output to user, all is doing by SHELL, inside this one program is running ie bash SHELL, it is default by linux.
+- There are different types of Shell
+  1) bash
+  2) ksh
+  3) csh
+  4) sh 
+ so many different shells are present.
+   
+
+#
+Shotdown a container
+"exit" to stop the container
+
+# List all containers(stopped and running)
+	$ sudo docker ps -a
+
+# List running containers only
+	$ docker ps
+
+# ps command output shows
+	- Image name from which container is created
+	- ID - container can be identified using short UUID, longer UUID Or name.
+	- Status of the container (Up / Exited)
+	- Name
+
+
+# See longer UUID of the container 
+	$ docker ps -a --no-trunc -q"
+
+# show the last container which you have created(stopped/running)
+	$ sudo docker ps -l
+
+# Naming the container
+	$ docker run --name gamut -it ubuntu /bin/bash
+
+# How to create multiple container in one command (creating container in background mode)
+        $ docker run -it -d --name <container-name> ubuntu /bin/bash
+        	-d is daemon mode, means container run in background mode, without -d you will get new terminal and with -d container create in background mode
+
+Note:- sequence doesnt matter after run -d before -it or -name but after -name container name is compulsory 
+
+Note: Two containers can't have the same name.
+
+# Rename a container (rename exist container)
+	$ docker rename db-server3 db-server-name3
+
+# Deleting a container 
+	$ docker rm ID/name (If we want to remove container so first check container is in running condition or not by using docker ps -a command, because we can not remove running container,
+  				then use the below  command)
+
+#Deleting a container forcefully 
+	$ docker rm -f ID/name (If we want to remove container forcefully whatever it is in running condition or not)
+
+
+# Delete all containers at once.
+ 	$ docker rm `docker ps -a -q` (delete all container at once by using ids -q take ids of all container)
+
+#Showing docker container ids only
+	$ docker container ps -a -q
+
+#docker info
+
+# Starting a stopped container
+	$ sudo docker start gamut
+	$ sudo docker stop aa3f365f0fdocker4e
+	$ sudo docker restart gamut
+
+# Shortcut Keys
+	- push a running container in background mode.
+	# Ctrl + p + q
+
+	- short cut to 'exit' from the container.
+	# Ctrl + d 
+	
+
+# Attaching to a running container (login to container)
+	$ docker attach gamut (gamut is container name)
+	$ docker attach b1b1c8dc1939 (b1b1c8dc1939 is container ID name).
+	
+
+# List Stopped containers only
+	$ docker ps -a -f status=exited
+	   Where Status can be exited / running
+
+# Stopped containers
+	$ docker stop <container-name> (SIGTERM) (gamut is container name).
+
+# Stopped containers forcefully
+	$ docker kill <container-name> (SIGKILL) (gamut is container name).
+
+
+
+=>Setup SSH for the container
+	ssh username@172.17.0.2
+
+- Install ssh server
+$ apt-get update
+$ apt-get install openssh-server
+
+- Start the server
+$ service ssh start (status/stop)
+
+- Create an user and set up password
+$ useradd -m -d /home/user-name -s /bin/bash password
+$ passwd password
+	
+- Connect to the container using ssh
+$ ssh username@172.17.0.2
+
+
+
+=========
+DAY-3:
+=========
+	# Inspecting the container's processes from host machine
+	- docker top <container-name>
+
+
+# Stoping a container from 'host machine'
+	- docker stop <container-name>
+	- docker stop <container-id> (like that ee319cddd42e)(SIGTERM)
+	- docker kill <container-name> (SIGKILL)
+
+# Show last 4 containers (stopped/running)
+	- docker ps -n4
+
+# Pause containers
+	- $ docker pause <container-name or ids>
+
+# Un-pause containers
+	- $ docker unpause <container-name or ids>
+
+
+# Find More About The Container
+- docker inspect comamnd "interrogates" the container and returns the info like.. configuration info, names, commands, n/w configurations, stopped/running ..etc.
+	---------        -------------                                            ------------------  -----  --------  ------------------  ---------------	 
+	 Examples:
+	$ docker inspect <container-name or ids> 
+		Note :- This command shows info about container.
+
+	$ sudo docker inspect <container-name or ids> | grep IPAddress | tail -1 
+		Note :- This command shows IPAddress of the running container.(EX. "IPAddress": "172.17.0.2", If we want to remove special character then us e below command).
+
+	$ sudo docker inspect <container-name or ids> | grep IPAddress | tail -1 | cut -d ':' -f2 | tr -d ' |,|"'
+		Note :- This command shows IPAddress of the running container using multiple command append in one command using (|) pipe symbol.
+	
+	$ sudo docker inspect <container-name or ids> -f '{{.NetworkSettings.Networks.bridge.IPAddress}}'
+		Note :- This is main command to show IPAddress of the running container.
+
+	$ sudo docker inspect --format '{{.Config.Hostname}}' <container-name>
+		Note :- If we want to see containers hostname then use above command.
+
+	$ sudo docker inspect -f '{{.NetworkSettings.Networks.bridge.IPAddress}}' `sudo docker ps -q`
+		Note :- This command shows IPAddress of all running containers.
+
+	$ sudo docker inspect -f '{{.Name}}' `sudo docker ps -a -q`
+		Note :- This command shows only name of all containers.
+
+	$ docker inspect --format='{{.Name}}' $(docker ps -aq --no-trunc) | cut -c2- 
+		Note :- 1).This command shows name of container (ex. /<container-name>). If we want to remove slash(/) from container name then use this command.
+			2). -c2- gives you container name without slash (/) (ex.<container-name>)
+			3). -c2 gives you first character of container name.(ex. c)
+   	Note: use --format (OR) -f  	
+
+
+- Remove all running containers
+		docker rm -f `docker ps -q`
+
+
+
+DAY-4:
+# Docker Images
+=================
+Agenda:
+	- Understand docker Image
+	- Create docker Image
+	- Store docker Image
+	- Share your own Image
+	- Examine repositories that hold images
+
+- Docker images are the building blocks for creating container.
+- From images, we launch containers.
+	
+# Listing docker images
+
+	$ sudo docker images
+		or
+	$ sudo docker image ls
+
+	$ sudo docker images -q 
+		Note :- It shows only ids.
+
+	$ sudo docker rmi `sudo docker images -q`
+		Note :- remove all images using this command.
+
+
+# Images are stored in First directory and Containers are stored in Second directory. 
+  ------               --------------      ----------
+1.) Images live in -  '/var/lib/docker/image/aufs/imagedb/content/sha256' --> This path is applicable on ubuntu OS only 
+                   -  '/var/lib/docker/overlay2/iamgedb/content/sha256' --> This path is applicable on centos7 OS only
+2.) Containers live in /var/lib/docker/containers
+
+
+DAY-5:
+PROJECT-1:
+============
+#
+SETTING-UP NGINX SERVER ON UBUNTU MANUALLY:
+--------------------------------------------
+ 
+ $ sudo apt-get update
+ $ sudo apt-get install -y nginx
+
+# start/stop/restart nginx server:
+  =========== 			
+ 	$ sudo service nginx start
+ 		       nginx stop 
+		       nginx restart
+		       nginx status
+
+# Deployment Path of the nginx server
+	 Web content/Deployment path: $ cd /var/www/html
+
+# Uninstall nginx:
+ 	$ sudo apt-get purge nginx nginx-common
+
+
+# Building our own Image
+	We have 2 Ways to create docker image:
+		1. docker "commit" (depricited)
+		2. docker "build" cmd & Dockerfile
+
+
+
+# 1.) First Approach 
+====================  (This approach is depricitd)
+Problem:- Creating docker image using "docker commit" command
+
+	Ship an application with ubuntu, nginx web server and code to your customer.
+
+
+	- create container
+		$ sudo docker run --name <image-container-name> -it ubuntu /bin/bash
+	
+	- Install nginx manually
+		# sudo apt-get install -y nginx
+	
+	- create a docker image from the container OR convert docker container as 	
+	  docker image
+		$ docker commit nginx-container "nageshvkn/nginx-image"
+	
+	- check if image has been created
+	  $ docker images
+
+	- push the newly created image to docker hub
+		$ docker login
+		$ docker push nageshvkn/nginx-img
+
+
+	- Customers can spin millions of new containers using below command. means we can create new container with image.
+		$ docker run -it nageshvkn/nginx-img /bin/bash
+
+
+#2.) Second Approach
+=====================
+
+PROJECT-2:
+=============
+DAY-6:
+# Problem:- Creating docker image using "docker build" command
+=================              -----------
+    
+     Step 1. Create One Project Directory within directory create one folder for create Dockerfile.
+	
+	- $ mkdir project  
+	- $ mkdir nginx 
+	- $ cd project/nginx
+	 	Note:- After creating Directory and folder create one Dockerfile using below command.
+
+	- $ touch Dockerfile
+		Note:- We can give any name to file insted of Dockerfile but Dockerfile is default name for Dockerfile. then create one sample html file for testing our build image.(i.e index.html)
+			           --------                   ----------     --------------------------
+
+	Note :-->  'nginx' directory is called "context" or "build context".
+		   It contains the war files, code, files or other data means it can be anything that you want to include in the image.
+
+	index.html:
+	=======
+	- $ vim index.html
+
+		<html>
+		   <body style="background-color:powderblue;">
+		     <h1 style="color:red;">Swapnil Mahajan Online Training Portal for Devops </h1>
+		   </body> 
+	       </html>
+
+	Now, create Dockerfile using below steps
+	
+	- $ vim Dockerfile
+
+	- Write within Dokckerfile below steps:
+
+		FROM ubuntu:16.04   	-(It is always start FROM first line of Dockerfile for creating container)
+		MAINTAINER "swapnilmahajan30@gmail.com" (we add this line for identifing who created this image)
+		RUN apt-get update  	-(we can write multiple command what we want to configure in our container server)
+		RUN apt-get install -y nginx
+		COPY index.html /var/www/html   -(copy the code or war or any file we want to deploy on nginx server)
+		ENTRYPOINT service nginx start && bash  -(This line start the services like ssh, server, or any thing)
+ 
+#Difference between RUN and ENTRYPOINT
+
+RUN :- RUN will be run during build time.
+---
+ENTRYPOINT:- ENTRYPOINT will be run after creation of the container.
+----------
+ 	
+# Building docker image:
+	$ cd nginx
+	$ docker build -t "swapnilhub/nginx-img" . ("username_of_dockerhub/image-name")
+
+		Note:- -t means tag i.e image_name,so build create docker file in current directory, so (.) means current directory. 
+		Note:- If the Dockerfile name is different then use -f myDockerfile before -t. Ex. see below command 
+
+	$ docker build -f myDockerfile -t "username_of_dockerhub/image-name" . 
+
+
+# Listing docker image
+	$ docker images
+		Note:- Verify image is create or not using the above command. 
+							      -------
+
+Note:- If you are First time user then Sign-up using below link 
+# Creating docker hub account
+- Docker Hub (https://hub.docker.com/)
+	- Each Repository can contain multiple images
+	- Images are Identified using tags.
+
+
+# Now we are Pushing custom images to docker_hub repository
+	$ docker login
+	$ docker push swapnilhub/nginx-img (username_of_dockerhub/image-name).
+
+#
+Testing Image
+-> First Delete your created image from directory and after use below command 
+
+# Deleting an Image
+	- docker rmi swapnilhub/nginx-img
+
+# Deleting all Images
+	- docker rmi `docker images -q`
+
+# Creating a new container from our image
+	$ docker run -it --name <give_name_to_container> username_of_dockerhub/image-name /bin/bash
+
+# Check IPaddress and everything what we are configure in Dockerfile in newly created container
+	$ hostname -i
+	$ service nginx status
+	$ service ssh status
+
+# Verify if nginx is running from the container.
+	$ http://172.17.0.2:80
+	
+
+Note:- If we want to add somthing in Dockerfile and we want to build again same Dockerfile that time we use this command, 
+       So internally skipping all already run command and running only added command using this command.
+ 
+# Build image without existing image	
+	- Use --no-cache option
+	$ docker build --no-cache -t="username/imagename" .
+
+#
+User Images Syntax:
+	swapnilhub/nginx (username/imagename)
+
+#
+Official Images Syntax:
+	ubuntu
+
+User images are controled by Docker users.
+official images are controled by Docker core team.
+
+
+# Specifying Image via tags
+	- ubuntu:14.04
+	  ubuntu- is image name
+	  14.04 - is called tag
+
+# Pulling the images
+	- docker pull centos
+
+# Searching docker images in docker hub
+	- docker search puppet
+	- docker search jenkins
+
+
+DAY-7:
+#
+Docker Image layers
+=========================
+- Checking the history of our docker image
+	$ docker history <Image-Id>
+
+# Container creation process
+  How contaner is created:
+		
+		Writable Layer		
+		-		
+		Gamutkart application		
+		Apache image
+		nginx image
+		-		
+		Ubuntu Base Image(rootfs)
+		-
+		Bootfs:
+		    cgroups, namespace, divicemapper/aufs..etc.
+		Kernel
+
+
+DAY-8:
+Gamutkart Real application;
+============================
+- Build and deployments with Docker containers.
+- Real Containerization with Docker.
+- Creating dockerized environments.
+
+Question:
+How are you using docker containerization tool for your builds and deployments?
+Can you explain your Docker environment?
+can you explain how you have implemented Docker in your project?
+
+Step:1. Clone the source code from Git or any other V.C.S
+	$ git clone https://github.com/swapnilmahajan-git/gamutkart2.git
+
+Step:2. Build the code using your favourate build tool Maven/ANT
+	$ mvn install 
+
+Step:3. Create docker file for the application(gamutkart) with
+   	war file, tomcat,n...etc.
+
+	Dockerfile:
+	FROM tomcat:8.0
+	COPY gamutkart.war /usr/local/tomcat/webapps
+	ENTRYPOINT /usr/local/tomcat/bin/startup.sh && bash
+
+Step:4. Build the Image:
+	$ docker build -t "swapnilhub/gamutkart" . (username/imagename)
+
+Step:5.
+Create the container manually using below command or user our 'create-env.sh' script. (Create docker containers using create_env.sh 10)
+	$ docker run --name gamutkart_server -d -it --rm nageshvkn/gamutkart /bin/bash
+
+Step:6. Launch the gamutkart application from all containers.
+
+	http://IP:8080/gamutkart
+
+================
+
+#
+-Deploy war-file on multiple container using shell script
+===================
+
+Step:1. Clone the source code from Git or any other V.C.S
+	$ git clone https://github.com/swapnilmahajan-git/gamutkart2.git
+
+Step:2. Build the code using your favourate build tool Maven/ANT
+	$ mvn install 
+
+Step:3. Create docker file for the application(gamutkart) with
+   	war file, tomcat,n...etc.
+
+	Dockerfile:
+	FROM tomcat:8.0
+	COPY gamutkart.war /usr/local/tomcat/webapps
+	ENTRYPOINT /usr/local/tomcat/bin/startup.sh && bash
+
+Step:4. Build the Image:
+	$ docker build -t "swapnilhub/gamutkart-img" . (username/imagename)
+
+Step:5. Write one shell script file for environment(create-env.sh)
+	-
+	-	
+	-
+
+Step:6. Create environment using shell script. Run the below command in project directory.(ex.cd/home/swapnil/Documents/gamutkart2/$./create-env.sh)
+	$ ./create-env.sh
+
+Step:7. Inspect IPaddress(get all IP address for attaching to load balancer)
+	
+	1.) Note:-This command use only for single running container IPAddress.
+	$ docker inspect <container-name> --format or -f '{{.Networksettings.Networks.bridge.IPAddress}}' `docker ps -q`
+	
+	2.) Note:- This command use to show IPAddress of all running containers
+	$ docker inspect --format '{{.Networksettings.Networks.bridge.IPAddress}}' `docker ps -a -q`
+
+Step:8. Create one txt file for storing all IPAddress for attaching to load balancer using below command (write this command into create-env.sh file)
+	$ docker inspect --format '{{.Networksetting.Networks.bridge.IPAddress}}' `docker ps -a -q` > Ips.txt
+
+Step:9. Write one shell script file for load balancer. (create-loadbalance.sh)
+	-	
+	-
+	-
+
+============================================================
+
+
+#
+Docker and Jenkins Integration
+-------------------------
+
+Step:1. Create one job in jenkins.(we can run this job using docker integration)
+  
+	-Job_Name(FreeStyle Project)
+		-> Git url
+		-> Maven
+ 		
+		-> Select Parameterized option
+			- select string parameter option. n give name only.
+			Name:- No_Of_containers
+
+		->Execute shell command
+			- docker build -t="username/imagename" .
+			- ./create-env.sh $no_of_container.
+
+
+
+======================================================
+
+# If we want to take Dockerfile from other directory, then use below command 
+  $ docker build -f <directory_path/Dockerfile_name> -t="username/imagename" .
+
+# If we want to create temporary container using create-env.sh file, then use this following command in env.sh file (use --fm in command)
+ 
+	docker run --name www.gamutkart$i -d --rm -it swapnilhub/test-image /bin/bash
+
+
+
+notes:
+======
+#
+Docker Benefits:
+=================
+1. Portability: 
+	ship environments from one type of infrastructure to another without building up new VMs and tearing down the old ones.
+
+2. Quick deployment/Teardown:
+	With a single command, you can spin up new containers or tear down existing ones. If you want to clone a new VM, you are looking at waiting for close to or over a few hours. With Docker, it will take a few minutes to achieve what you need.
+
+3. Consistency:
+	No more of the "works on my machine!" excuse. As
+everyone uses the same images to work, consistency is always guaranteed.
+	All the container will act the same in your environment as it will on others.
+
+4. Managing infrastructure-like code:
+When it comes to upgrades, you can simply update your Dockerfile, and then tear down the old one. This helps not only with updates, but it can also help with rollbacks as well.
+
+# 
+Manage/Run Docker as a non-root user
+==========================
+Run docker command without sudo.	
+------
+	1. Create the "docker" group
+		$ sudo groupadd docker
+
+	2. Add your user to this group
+		$ sudo usermod -aG docker gamut
+
+	3. Logout and Login back so that your group membership
+	   is re-evaluated.
+
+	4. Check group existance:
+		$ sudo grep docker /etc/group
+
+	5. Delete the group
+		$ sudo groupdel docker
+	
+	6. You can use 'gpasswd' command to remove the user from the group or add the 
+	   User to the group.
+		$ sudo gpasswd -d gamut docker
+		$ sudo gpasswd -a gamut docker
+
+# Note :- Suppose if you are getting error like below after adding user in sudo
+		WARNING: Error loading config file: /home/swapnil/.docker/config.json: stat /home/swapnil/.docker/config.json: permission denied
+
+ANS:- $ sudo chown -R swapnil:docker /home/swapnil/.docker
+			or
+      $ sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
+
+# How to create tar file for image?
+==> docker export <container-name> -o image-name.tar  
+
+
+# How to find particular process running in backgroud without using | grep?
+==> pidof <servicename> (It shows only process id)
+    pgrep <servicenmae> 
+
+# How to import tar image 
+==>cat image-name.tar | docker import - image-name:latest
+
+# how to change hotname of the created container
+==> docker run --name <container-name> -it -h <host-name> ubuntu /bin/bash
+
+
+Misc:
+=======
+# Copying file from 'host machine' to docker container
+$ docker cp filename contaier_name:/target/path/of/container
+
+# How to set Environment variable in a container?
+	ENV JAVA_HOME /home/gamut/Distros/jdk1.8.0_191
+
+# How do you log into a container automatically using a particular user 
+	USER gamut
+
+Extras:
+docker networking
+docker compose
+docker volumes
+docker swarm
+
+
