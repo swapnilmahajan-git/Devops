@@ -1,10 +1,12 @@
 ===============================================
 
-1.) What is continuos integration C.I.? & Continuous Delivery C.D?
+1.) What is continuos integration C.I.? & Continuous Delivery C.D and Contineous Deployment C.D.?
 
 	- C.I integration is nothing but continous compilation, testing and deployment.
 	- C.I is a process which monitors the new changes coming into V.C.S like Git, checkouts the source code, builds the change, runs the test case to test the change and deploys it to given 		  environment automatically (seemlessly) without any manual intervention.
 	
+	- C.D. Contineous Delivery of code to an environment once the code is ready to ship. This could be staging or production. The idea is the product is delivered to a user base, which can be QAS or 		  customers for review and inspection.
+
 	- C.D depoloment extends continuous delivery so that the software build will automatically deploy if it passes all tests. In such a process, there is no need for a person to decide when and what 		  goes into production
 
 2.) How do you change Jenkins HOME directory??
@@ -346,6 +348,23 @@
 47.)What is No. of executers in jenkins?
 
 	- It is recommended to allocate executers to agent machines, rather than on the jenkins master to avoid potential security vulnerabilities, Out-Of-Memory and other performance issues. To do this, 		  configure the "# of executers" to '0' on the master, by default node is '2'.
+
+
+48.) How will you explain the concept of pipeline in Jenkins?
+
+	- A jenkins pipeline is simply set of plugins that support contineous integration and implementation in jenkins
+
+49.) Define the continuous delivery pipeline in Jenkins?
+
+	- The contineous delivery pipeline is the automated expression of the process for version control for different users.
+
+50.) What is Jenkins File and why it is needed in DevOps?
+
+	- The jenkins pipeline details are stored in a file that is named as the jenkins file and it is further connected to the source code repository.
+
+51.) What is log rotation in jenkins
+	
+	- Go to configure job --> Select Discard builds --> Select log rotation in strategy --> Days to keep builds and Max # of builds to keep.
 
 
 # Jenkins with .NET framework
