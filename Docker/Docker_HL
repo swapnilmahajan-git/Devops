@@ -5,7 +5,7 @@ Que1). Diff bet'n Physical server, Virtual server and Docker container?
 =>Physical Server :- We are creating one physical server machine with 1TB HDD, CPU and RAM, if we required another multiple server that time we need same configuration machine, 
   		     that means we will do seprate OS, HDD, RAM, in all machine so the time and cost will be increasing and testing and deployment process will be slow.
 
-=>Virtual Server :- If we are using virtual machine in one Computer, we are installing multiple virtual machine in computer and after install seprate OS and allocating some Storage and Ram.
+=>Virtual Machine :- If we are using virtual machine in one Computer, we are installing multiple virtual machine in computer and after install seprate OS and allocating some Storage and Ram.
                     means we are virtualize the hardware, means we can supply the same hardware to this computer. again the all process will be going on one machine but its taking more time, 
 		    means process will be slow.
 
@@ -212,7 +212,7 @@ Shotdown a container
         $ docker run -it -d --name <container-name> ubuntu /bin/bash
         	-d is daemon mode, means container run in background mode, without -d you will get new terminal and with -d container create in background mode
 
-Note:- sequence doesnt matter after run -d before -it or -name but after -name container name is compulsory 
+Note:- sequence doesnt matter after run -d before -it or --name but after --name container name is compulsory 
 
 Note: Two containers can't have the same name.
 
@@ -231,7 +231,7 @@ Note: Two containers can't have the same name.
  	$ docker rm `docker ps -a -q` (delete all container at once by using ids -q take ids of all container)
 
 #Showing docker container ids only
-	$ docker container ps -a -q
+	$ docker ps -a -q
 
 #docker info
 
@@ -422,18 +422,18 @@ Problem:- Creating docker image using "docker commit" command
 	
 	- create a docker image from the container OR convert docker container as 	
 	  docker image
-		$ docker commit nginx-container "nageshvkn/nginx-image"
+		$ docker commit nginx-container "swapnilhub/nginx-image"
 	
 	- check if image has been created
 	  $ docker images
 
 	- push the newly created image to docker hub
 		$ docker login
-		$ docker push nageshvkn/nginx-img
+		$ docker push swapnilhub/nginx-image
 
 
-	- Customers can spin millions of new containers using below command. means we can create new container with image.
-		$ docker run -it nageshvkn/nginx-img /bin/bash
+	- Customers can spin(create) millions of new containers using below command. means we can create new container with image.
+		$ docker run -it swapnilhub/nginx-img /bin/bash
 
 
 #2.) Second Approach
@@ -491,7 +491,7 @@ ENTRYPOINT:- ENTRYPOINT will be run after creation of the container.
  	
 # Building docker image:
 	$ cd nginx
-	$ docker build -t "swapnilhub/nginx-img" . ("username_of_dockerhub/image-name")
+	$ docker build -t "username_of_dockerhub/image-name" . ("swapnilhub/nginx-img")
 
 		Note:- -t means tag i.e image_name,so build create docker file in current directory, so (.) means current directory. 
 		Note:- If the Dockerfile name is different then use -f myDockerfile before -t. Ex. see below command 
@@ -513,14 +513,14 @@ Note:- If you are First time user then Sign-up using below link
 
 # Now we are Pushing custom images to docker_hub repository
 	$ docker login
-	$ docker push swapnilhub/nginx-img (username_of_dockerhub/image-name).
+	$ docker push username_of_dockerhub/image-name (swapnilhub/nginx-img).
 
 #
 Testing Image
 -> First Delete your created image from directory and after use below command 
 
 # Deleting an Image
-	- docker rmi swapnilhub/nginx-img
+	- docker rmi username_of_dockerhub/image-name (EX. swapnilhub/nginx-img)
 
 # Deleting all Images
 	- docker rmi `docker images -q`
@@ -542,11 +542,11 @@ Note:- If we want to add somthing in Dockerfile and we want to build again same 
  
 # Build image without existing image	
 	- Use --no-cache option
-	$ docker build --no-cache -t="username/imagename" .
+	$ docker build --no-cache -t="username_of_dockerhub/image-name" .
 
 #
 User Images Syntax:
-	swapnilhub/nginx (username/imagename)
+	swapnilhub/nginx (username_of_dockerhub/image-name)
 
 #
 Official Images Syntax:
@@ -562,11 +562,11 @@ official images are controled by Docker core team.
 	  14.04 - is called tag
 
 # Pulling the images
-	- docker pull centos
+	- docker pull <image-name>
 
 # Searching docker images in docker hub
-	- docker search puppet
-	- docker search jenkins
+	- docker search <image-name> (Ex. puppet)
+	- docker search <image-name> (Ex. jenkins)
 
 
 DAY-7:
@@ -619,7 +619,7 @@ Step:3. Create docker file for the application(gamutkart) with
 	ENTRYPOINT /usr/local/tomcat/bin/startup.sh && bash
 
 Step:4. Build the Image:
-	$ docker build -t "swapnilhub/gamutkart" . (username/imagename)
+	$ docker build -t "swapnilhub/gamutkart" . (username_of_dockerhub/image-name)
 
 Step:5.
 Create the container manually using below command or user our 'create-env.sh' script. (Create docker containers using create_env.sh 10)
@@ -694,7 +694,7 @@ Step:1. Create one job in jenkins.(we can run this job using docker integration)
 			Name:- No_Of_containers
 
 		->Execute shell command
-			- docker build -t="username/imagename" .
+			- docker build -t="username_of_dockerhub/image-name" .
 			- ./create-env.sh $no_of_container.
 
 
@@ -772,7 +772,7 @@ ANS:- $ sudo chown -R swapnil:docker /home/swapnil/.docker
 # How to import tar image 
 ==>cat image-name.tar | docker import - image-name:latest
 
-# how to change hotname of the created container
+# how to change hostname of the created container
 ==> docker run --name <container-name> -it -h <host-name> ubuntu /bin/bash
 
 
@@ -788,9 +788,9 @@ $ docker cp filename contaier_name:/target/path/of/container
 	USER gamut
 
 Extras:
-docker networking
-docker compose
 docker volumes
+docker compose
 docker swarm
+docker networking
 
 

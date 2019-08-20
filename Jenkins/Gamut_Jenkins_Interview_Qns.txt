@@ -1,6 +1,6 @@
 ===============================================
 
-1.) What is continuos integration C.I.? & Continuous Delivery C.D and Contineous Deployment C.D.?
+1.) What is continuos integration C.I. & Continuous Delivery C.D and Contineous Deployment C.D.?
 
 	- C.I integration is nothing but continous compilation, testing and deployment.
 	- C.I is a process which monitors the new changes coming into V.C.S like Git, checkouts the source code, builds the change, runs the test case to test the change and deploys it to given 		  environment automatically (seemlessly) without any manual intervention.
@@ -101,15 +101,15 @@
 
 
 11.) How do you start/stop jenkins?
-	- http://<jenkins.server>/exit
-	- http://<jenkins.server>/safeExit
-	- http://<jenkins.server>/restart
+	- http://<jenkins.server>/exit (http://localhost:8080/exit)
+	- http://<jenkins.server>/safeExit (http://localhost:8080/safeExit)
+	- http://<jenkins.server>/restart (http://localhost:8080/restart)
 	
 
 12.) Jenkins is running some jobs and I want to restart it. How do you restart? or How do you restart the jenkins without interrupting running jobs?
 								      ----
 	- http://<jenkins.server>/restart
-	- http://<jenkins.server>/safeRestart
+	- http://<jenkins.server>/safeRestart (http://localhost:8080/safeRestart)
 
 
 13.) What is the default port number of jenkins?
@@ -168,7 +168,7 @@
 			  - give the desired path in the shlave plugin.
 
 22.) How do you rotate logs for your Jenkins? 
-	- 
+	- Go to configure job --> Select Discard builds --> Select log rotation in strategy --> Days to keep builds and Max # of builds to keep.
 
 23.) How do you backup your jenkins data?
 	- ThinBackup
@@ -362,9 +362,6 @@
 
 	- The jenkins pipeline details are stored in a file that is named as the jenkins file and it is further connected to the source code repository.
 
-51.) What is log rotation in jenkins
-	
-	- Go to configure job --> Select Discard builds --> Select log rotation in strategy --> Days to keep builds and Max # of builds to keep.
 
 
 # Jenkins with .NET framework

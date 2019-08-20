@@ -13,7 +13,7 @@ Step 3.
  3A. -If the project is new THEN create new repository in GIT, after in new repo there is MASTER_BRANCH, 
      -in MASTER_BRANCH define project working structure nd push this project in MASTER_BRANCH. 
  			   ---- 
- 3B. -After committing project in MASTER_BRANCH, create one DEV_BRANCH from MASTER_BRANCH.
+ 3B. -After committing project architecture in MASTER_BRANCH, create one DEV_BRANCH from MASTER_BRANCH.
   
  3C. -After DEV_BRANCH create some FEATURE_BRANCHS(1,2,3,...etc.) from DEV_BRANCH regarding tasks nd requirment. In this branch developer doing all work regarding project and push into this branch.
   

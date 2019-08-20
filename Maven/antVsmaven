@@ -39,7 +39,7 @@ Maven:
 		automatic dependency resolution,
 		predefined build life cycle
 
-5. Maven is more than a build tool i.e maven is "project management" tool.
+5. Maven is more than a build tool i.e maven is "project management".
 	ex: using maven, we can generate site for our project which includes, developers workign on a particular project, dependency list, test case statistics, automation graphs.
 
 6. Since Maven is high level tool, may not be suitable if we want to do more customizations.

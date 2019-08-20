@@ -66,7 +66,7 @@
  
    - Staging area - This is unique feature of Git. It is called index. It is kind of temporary area where the changes could be reorganized before committing to the repository. 
                   - This is an additional layer in addition to working copy and repository. 
-                  - Once you are satisfied the changes can be committed.
+                  - Once you are satisfied the changes then it can be committed.
 
 
 6.) Why we call Git as Distributed VCS?
@@ -152,6 +152,7 @@
 
 
 16.) Where Git stores configuration details?
+	- In .gitconfig file stores configuration details.
 	- $ /home/swapnil/.gitconfig
 
 17.)* What is the advantage of STAGE in Git?
@@ -222,12 +223,14 @@
 
 28.)* How do you merge the code in Git?
 
-    - git checkout branch and git merge command.
+    - git checkout <branch_name>
+    - git merge <branch_name>
 
 
 29.)* What is merge? 
 
 	- Combine two branchs in one branch it is called merge. using git merge command.
+	- git merge <branch_name>
 
 30.)*What is conflict? OR When do we get conflict?
 
@@ -290,7 +293,7 @@
 37.) When do you create a branch and tag?
 	
 	-branch is create for development
-	 -tag is used after development done of the branch
+	-tag is used after development done of the branch
 
 
 38.) How do you create a branch and switch to that using single command?
@@ -354,7 +357,7 @@
 
 46.) How to remove a committed change? Or can we remove?
 		$ git reset --hard HEAD~1 (completely remove changes from local repository).
-		$ git reset --soft HEAD~1 (It will remove from .git to stage)
+		$ git reset --soft HEAD~1 (It will move from .git to stage)
 		$ git reset --mixed HEAD~1 (It will move from .git to source)
 
 
@@ -372,7 +375,7 @@
 
 	1.) - $ git log --diff-filter=D --summary (get SHA-value of deleted file using this command.)
 	2.) - $ git checkout $commit <SHA-VALUE>~1 <filename>
-	3.) - $ git status
+	3.) - $ git status (file present in stage area)
 
 
 50.) How do you list the diff. of a file between two different branches.
@@ -589,7 +592,7 @@
 
 68.) What is the Working Tree in Git?
 	
-	- Th Working Tree in Git is a directory (and its files and subdirectories) on your file system that is associated with a repository.
+	- The Working Tree in Git is a directory (and its files and subdirectories) on your file system that is associated with a repository.
 	- It's full of the files you edit, where you add new files, and from which you remove unneeded files. 
 	- Any changes to the Working Tree are noted by the Index (see below), and show up as modified files.
 
@@ -609,6 +612,15 @@
 		- http:// - default port 80
 		- https:// - default port 443
 
+71.) How to check all remote branches and how to get in locally
+
+	- git branch -r
+		or 
+	- git branch -a
+
+	- git checkout origin/dev1.0
+
+	- git checkout dev1.0
 
 =========================
 3.git bi-sect

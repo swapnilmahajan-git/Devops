@@ -2,7 +2,10 @@
 =====================
 1.) What are the differences between ANT and Maven.
 
-	- Refer antVsmaven difference file.
+	- ANT is low level build tool
+	- MAVEN is high level build tool
+	- Need more time build and deploment
+	- Very less time required
 
 2.) How do you create a jar/war file in Maven?
 	
@@ -151,6 +154,22 @@
 		- test, 
 		- system, 
 		- import.
+
+23.)What inside the target folder?
+	
+			target
+			  |
+		classes     test-classes	surefire-reports	jar/war file
+
+
+	classes: directory contains compiled class files
+				of main source code
+	test-classes: directory contains compiled class
+				files of test source code
+				
+	surefire-reports: contains test reports.
+
+	flipkart-1.0-SNAPSHOT.jar: jar file of main code
 
 
 

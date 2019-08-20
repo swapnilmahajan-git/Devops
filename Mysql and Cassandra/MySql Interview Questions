@@ -1,0 +1,32 @@
+1).What is the default port for MySQL Server?
+
+Ans:- The default port for MySQL Server is 3306.
+
+2).What do DDL, DML, and DCL stand for?
+
+DDL is the abbreviation for Data Definition Language dealing with database schemas, as well as the description of how data resides in the database. An example of this is the CREATE TABLE command. 
+DML denotes Data Manipulation Language which includes commands such as SELECT, INSERT, etc. 
+DCL stands for Data Control Language and includes commands like GRANT, REVOKE, etc.
+
+3).What is a join in MySQL?
+
+In MySQL, joins are used to query data from two or more tables.
+
+4).What is the difference between the primary key and the candidate key?
+
+The primary key in MySQL is used to identify every row of a table in a unique manner. For one table, there is only one primary key. 
+The candidate keys can be used to reference the foreign keys. One of the candidate keys is the primary key.
+
+5).Can you use MySQL with Linux operating system?
+
+Yes. The syntax for using MySQL with Linux operating system is as follows:
+ etc/init.d/mysqlstart
+
+6).What is the difference between the DELETE TABLE and TRUNCATE TABLE commands in MySQL?
+Basically, DELETE TABLE is a logged operation, and every row deleted is logged. Therefore, the process is usually slow. 
+TRUNCATE TABLE also deletes rows in a table, but it will not log any of the rows deleted.
+
+7).What is the basic MySQL architecture?
+The logical architecture of MySQL is made of ‘connection manager’, ‘query optimizer’, and ‘pluggable engines’.
+
+8).CRUD Querys?

@@ -2,6 +2,10 @@ config first time
 git config --global user.name "swapnil"
 git config --global user.email "swap@gmail.com"
 
+git clone 
+    
+svn checkout command
+
 git pull
 git stash
 git stash pop
@@ -14,6 +18,8 @@ git push
 git diff filename
 git diff --staged filename
 
+git branch <branch_name>
+git checkout -b <branch_name>
 git branch-name -D (delete branch)
 
 
@@ -21,6 +27,9 @@ git init
 git remote add <repo-name> <remote-repo-url>
 git push <repo-name>
 git push --set-upstream origin master
+
+Subversion uses svn import command to create initial repository
+		----------
 
 log command 
 

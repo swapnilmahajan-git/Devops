@@ -1,6 +1,9 @@
 					MAVEN				
 
-DAY-1:			============
+============
+Phase-1
+============
+
 #1
 	Java Build and Deployment End-To-End Workflow.
 
@@ -15,10 +18,10 @@ What is Maven? Why we need a build tool?
 
 #4
 Installation
-	- Download JDK and extract it to your favourite location.
-	- Download Maven and extract it to your favourite location.
+	- Download openjdk and extract it to your favourite location.
+	- Download Apache Maven and extract it to your favourite location.
 	- Set-up below Environment variables for Maven and JDK in order to run Maven
-	  and JDK commands from any directory in th system.
+	  and JDK commands from any directory in the system.
 		1. JAVA_HOME
 		2. M2_HOME
 		3. PATH
@@ -28,8 +31,8 @@ Installing JDK and Maven:
   A. create $USER_HOME/.bashrc
   
   B. create below Environment variables
-	export M2_HOME=/home/praveen/mavensoftwares/apache-maven-3.3.9
-	export JAVA_HOME=/home/praveen/mavensoftwares/jdk1.8.0_121
+	export M2_HOME=/home/swapnil/Documents/jenkins-server/apache-maven-3.3.9
+	export /home/swapnil/Documents/jenkins-server/jdk1.8.0_121
 	export PATH=$M2_HOME/bin:$JAVA_HOME/bin:$PATH
 
 
@@ -37,10 +40,13 @@ Load .bashrc using below command or open new ternimial
 	$ source .bashrc
  
 Verify Installation
-	$ javac -version
+	$ java -version
 	$ mvn --version
 
-DAY-2:
+
+============
+Phase-2
+============
 
 #5 TEST YOUR KOWLEDGE
 Build and Deployment E2E work-flow and basics
@@ -66,7 +72,7 @@ java projects which are created by maven, ideally follows below project folder s
 	|				|
    java		       java
 	|				|
-  (group.Id)	  (group.Id)
+  (group .Id)	  (group.Id)
 	|				|
 App.java		AppTest.java
 
@@ -88,7 +94,11 @@ Creating a Java Project using Maven:
 $ mvn archetype:generate -DgroupId=com.gamutkart -DartifactId=gamutkart -Dversion=1.0-SNAPSHOT -DinteractiveMode=false
 (Note :- For creating Maven project we need GAV parameter).
 
-DAY-3:
+
+============
+Phase-3
+============
+
 #8
 Building the maven project:
 -----------------------
@@ -151,7 +161,10 @@ Artifact path in local repository .m2
 
 
 
-DAY-4:
+============
+Phase-4
+============
+
 #11: Maven Automatic Dependency resolution feature
 	
 	- Direct dependency
@@ -171,7 +184,12 @@ Maven repositories
 "mvn clean"  - remove old target folder from project directory.
 	
 
-DAY-5:
+
+============
+Phase-5
+============
+
+
 #14
 Build types
 	- Complete build/Clean build/Full build
@@ -200,6 +218,9 @@ Where Maven's coordinates/GAV parameters come into picture / helpful?
 		downloaded during dependency resolution.
 
 
+============
+Phase-6
+============
 
 --> web app builds
 For WebApps, to generate the war file, use: -DarchetypeArtifactId=maven-archetype-webapp, option as part of 'mvn archetype:generate' command which you have used before for stand-alone application.
@@ -258,7 +279,6 @@ $ $TOMCAT_HOME/bin/startup.sh
 Launch application with below URL.
 http://localhost or system IP:8080/flipkart
 [http://tomcat_server_name:8080/warfilename]
-
 
 
 #26

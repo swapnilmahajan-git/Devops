@@ -7,7 +7,7 @@ Day-1
 
 2) How to Write, storing and deploy application processs?
 
-=> This is development Team and This is GIT, so developers write code in local machine and submit code into GIT, so GIT is sourec where storing complete Application code, now devops engineer comes into picture and clone or download the code from git and he will compile the code using MAVEN and creating WAR file, once we are creating war file then this war file deploying onto TOMCAT server. So this is complete process of developing to deploy.
+=> This is development Team and This is GIT, so developers write code in local machine and submit code into GIT, so GIT is source where storing complete Application code, now devops engineer comes into picture and clone or download the code from git and he will compile the code using MAVEN and creating WAR file, once we are creating war file then this war file deploying onto TOMCAT server. So this is complete process of developing to deploy.
 
 => so As devops engineer we are responsible for creating and setup this server for developers team, QA team and testing team, Devops team also write code i.e scripting, config file and all, so all team write code and submit code into GIT. So GIT is system where we can store all application code.
 
@@ -320,8 +320,7 @@ Git merge command merges the changes from dev_1.2.3 to master.
 
 # Run git status command to list conflict file
 
-#
-  Resolve the conflict and commit the merge
+#Resolve the conflict and commit the merge
 
 # Run git push command to move the merge to Remote.
 

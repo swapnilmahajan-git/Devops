@@ -6,7 +6,7 @@
 		- use yaml files to configure application services (docker-compose.yml)
 		- can start all services with a single command : docker compose up
 		- can stop all services with a single command : docker compose down
-		- can scale up selected services when required
+		- can scale up selected services when required : --scale <service-name>=4
 
 # Installation Steps
 ====================
