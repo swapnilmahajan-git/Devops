@@ -6,8 +6,7 @@ Que1). Diff bet'n Physical server, Virtual server and Docker container?
   		     that means we will do seprate OS, HDD, RAM, in all machine so the time and cost will be increasing and testing and deployment process will be slow.
 
 =>Virtual Machine :- If we are using virtual machine in one Computer, we are installing multiple virtual machine in computer and after install seprate OS and allocating some Storage and Ram.
-                    means we are virtualize the hardware, means we can supply the same hardware to this computer. again the all process will be going on one machine but its taking more time, 
-		    means process will be slow.
+                    means we are virtualize the hardware, means we can supply the same hardware to this computer. again the all process will be going on one machine but its taking more time, means process will be slow.
 
 =>Docker Container :- If we are using DOCKER, docker also provide virtualization, means install docker in one computer there is no need to install seprate OS,HDD and RAM.
 
@@ -82,7 +81,7 @@ Installation Steps:
 	$ sudo apt-get update
 
 # Install docker dependencies
-	$ sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+	$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 
 # Add GPG key to apt repository
 	$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -371,8 +370,8 @@ Agenda:
 
 # Images are stored in First directory and Containers are stored in Second directory. 
   ------               --------------      ----------
-1.) Images live in -  '/var/lib/docker/image/aufs/imagedb/content/sha256' --> This path is applicable on ubuntu OS only 
-                   -  '/var/lib/docker/overlay2/iamgedb/content/sha256' --> This path is applicable on centos7 OS only
+1.) Images live in -  '/var/lib/docker/image/aufs/imagedb/content/sha256' --> This path is applicable on CENTOS7 OS only 
+                   -  '/var/lib/docker/overlay2/iamgedb/content/sha256' --> This path is applicable on UBUNTU OS only
 2.) Containers live in /var/lib/docker/containers
 
 
@@ -467,7 +466,7 @@ DAY-6:
 		   <body style="background-color:powderblue;">
 		     <h1 style="color:red;">Swapnil Mahajan Online Training Portal for Devops </h1>
 		   </body> 
-	       </html>
+	        </html>
 
 	Now, create Dockerfile using below steps
 	
@@ -760,6 +759,9 @@ Run docker command without sudo.
 ANS:- $ sudo chown -R swapnil:docker /home/swapnil/.docker
 			or
       $ sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
+			or
+      $ sudo chmod 666 /var/run/docker.sock
+
 
 # How to create tar file for image?
 ==> docker export <container-name> -o image-name.tar  

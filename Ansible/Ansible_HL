@@ -1,0 +1,99 @@
+# What is Ansible and Why it is needed?
+
+# Install Ansible
+
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository --yes --update ppa:ansible/ansible
+$ sudo apt-get install ansible
+
+# Verify the Installation is done or not
+
+$ ansible --version
+
+# What is Inventory in Ansible.
+
+- Ansible works in multiple server at same time. so we need info about all server, we need to do ssh or any other way to do communication, 
+  but in ansible there is no need to do anything we just need to store ip and password of the serverin inventory file, it's stored in /etc/ansible/hosts directory
+  it is called as Agentless. This is inventory.
+
+- Inventory Parameters:
+  1. ansible_connection-ssh
+  2. ansible_prot-22
+  3. ansible_user-root/administrator
+  4. ansible_ssh_pass-Password
+ 
+- for check the connection with target server using inventary file use below command
+  $ ansible hostname -m ping -i inventary-file-name.
+
+
+# What is YAML?
+- Spaces, Dictionary, List, List Of Dictionaries
+	- Dictionary - Unordered
+	- List - Ordered
+
+# Ansible Playbooks
+- Playbook- A singleYAML file 
+	Play- Defines a set of activities(task) to be run on hosts.
+	Task- An action to be performed on the host
+	  - Execute a command
+	  - Run a script
+ 	  - Install a package
+	  - Shutdown/Restart
+	Hosts- indicates on which serevr you want to perform operations.
+	Module- A different actions run by tasks is called module.
+	-Example of module-(command, script, yum, service   etc.)
+
+	Run- Execute Ansible Playbook
+	     Syntax: ansible-playbook <playbook-file-name> (ex. ansible-playbook playbook.yml)
+# Modules
+-System: modules are below like	
+	- user, group, hostname, iptables,lvg,lvol, Make, Mount, Ping, Timezone, Systemd, Service.
+
+-Commands: modules are below like
+	- command, expect, raw, script,shell
+
+-Files: modules are below like
+	- acl,archive,copy,file,find,lineinfile,replace,stat,template,unarchive
+
+-Database: modules are below like
+	- mongodb,mysql,postgresql,...
+
+-Cloud: modules are below like
+	- amazon,azure.....
+
+-Windows: modules are below like
+	- win_copy,win_command,win_file..........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

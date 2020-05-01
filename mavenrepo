@@ -36,8 +36,8 @@ sshpass -p "gamut" ssh gamut@172.17.0.4 "JAVA_HOME=/home/gamut/Distros/jdk1.8.0_
 fi
 
 
-export JAVA_HOME=/home/gamut/Distros/jdk1.8.0_191
-export M2_HOME=/home/gamut/Distros/apache-maven-3.6.0
+export JAVA_HOME=/home/server1/jdk1.8.0_241
+export M2_HOME=/home/serevr1/apache-maven-3.6.3
 export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
 
