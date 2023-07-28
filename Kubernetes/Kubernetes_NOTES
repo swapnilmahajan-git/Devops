@@ -1,0 +1,42 @@
+				     ======= KUBERNETES =======
+1.) What is Kubernetes?
+
+* Kubernetes is an open-source container orchestration platform developed by Google. 
+* It provides a framework for automating the deployment, scaling, and mgmt of containerized appln. 
+* Kubernetes aims to simplify the management of complex distributed systems by abstracting,
+  away many  of the underlying infrastructure details.
+
+* Kubernetes is designed to manage containers,which are lightweight and isolated environments for    running applications and their dependencies. 
+* Containers offer consistency and portability, allowing applications to run reliably across different environments. 
+
+===> DOCKER - Its Container Engine
+
+2.) What is Orchestration?
+
+* To manage multiple instances(VM)and now its (Containers)life from sigle node,tool,application.
+* Container orchestration, specifically, focuses on managing the lifecycle of containers, including their deployment, scaling, networking, storage, and coordination with other containers and services. *It abstracts away the complexities of managing individual containers and provides a higher-level interface for managing the entire application stack.
+
+=== key concepts in Kubernetes:
+
+Pods:
+----- 
+The basic building block of a Kubernetes application. A pod encapsulates one or more containers and provides a shared network namespace and storage. Containers within a pod share the same IP address and can communicate with each other using localhost.
+
+ReplicaSets:
+------------
+A ReplicaSet ensures that a specified number of identical pods are running at any given time. It provides high availability and scalability by creating or terminating pods based on the desired state defined in the configuration.
+
+Services:
+--------- 
+A service in Kubernetes provides a stable network endpoint for accessing a group of pods. It enables load balancing and automatic service discovery within the cluster, allowing applications to communicate with each other.
+
+Deployments:
+-----------
+Deployments provide a declarative way to manage updates and rollbacks of applications. They define the desired state of a set of pods and handle the necessary steps to achieve that state, such as creating new pods, terminating old ones, and ensuring availability during the update process.
+
+Namespaces: 
+-----------
+Kubernetes supports multiple virtual clusters within the same physical cluster using namespaces. Namespaces provide isolation and resource allocation boundaries, allowing different teams or projects to operate independently within the same cluster.
+
+
+

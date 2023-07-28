@@ -205,7 +205,7 @@ Shotdown a container
 	$ sudo docker ps -l
 
 # Naming the container
-	$ docker run --name gamut -it ubuntu /bin/bash
+	$ docker run --name guru -it ubuntu /bin/bash
 
 # How to create multiple container in one command (creating container in background mode)
         $ docker run -it -d --name <container-name> ubuntu /bin/bash
@@ -235,9 +235,9 @@ Note: Two containers can't have the same name.
 #docker info
 
 # Starting a stopped container
-	$ sudo docker start gamut
+	$ sudo docker start swapnil
 	$ sudo docker stop aa3f365f0fdocker4e
-	$ sudo docker restart gamut
+	$ sudo docker restart swapnil
 
 # Shortcut Keys
 	- push a running container in background mode.
@@ -248,7 +248,7 @@ Note: Two containers can't have the same name.
 	
 
 # Attaching to a running container (login to container)
-	$ docker attach gamut (gamut is container name)
+	$ docker attach swapnil (swapnil is container name)
 	$ docker attach b1b1c8dc1939 (b1b1c8dc1939 is container ID name).
 	
 
@@ -257,10 +257,10 @@ Note: Two containers can't have the same name.
 	   Where Status can be exited / running
 
 # Stopped containers
-	$ docker stop <container-name> (SIGTERM) (gamut is container name).
+	$ docker stop <container-name> (SIGTERM) (swapnil is container name).
 
 # Stopped containers forcefully
-	$ docker kill <container-name> (SIGKILL) (gamut is container name).
+	$ docker kill <container-name> (SIGKILL) (swapnil is container name).
 
 
 
@@ -371,7 +371,7 @@ Agenda:
 # Images are stored in First directory and Containers are stored in Second directory. 
   ------               --------------      ----------
 1.) Images live in -  '/var/lib/docker/image/aufs/imagedb/content/sha256' --> This path is applicable on CENTOS7 OS only 
-                   -  '/var/lib/docker/overlay2/iamgedb/content/sha256' --> This path is applicable on UBUNTU OS only
+                   -  /var/lib/docker/image/overlay2/imagedb/content/sha256 --> This path is applicable on UBUNTU OS only
 2.) Containers live in /var/lib/docker/containers
 
 
@@ -421,7 +421,7 @@ Problem:- Creating docker image using "docker commit" command
 	
 	- create a docker image from the container OR convert docker container as 	
 	  docker image
-		$ docker commit nginx-container "swapnilhub/nginx-image"
+		$ docker commit <container-name> "swapnilhub/nginx-image"
 	
 	- check if image has been created
 	  $ docker images
@@ -580,7 +580,7 @@ Docker Image layers
 		
 		Writable Layer		
 		-		
-		Gamutkart application		
+		flipkart application		
 		Apache image
 		nginx image
 		-		
@@ -592,7 +592,7 @@ Docker Image layers
 
 
 DAY-8:
-Gamutkart Real application;
+Flipkart Real application;
 ============================
 - Build and deployments with Docker containers.
 - Real Containerization with Docker.
@@ -604,29 +604,29 @@ Can you explain your Docker environment?
 can you explain how you have implemented Docker in your project?
 
 Step:1. Clone the source code from Git or any other V.C.S
-	$ git clone https://github.com/swapnilmahajan-git/gamutkart2.git
+	$ git clone https://github.com/swapnilmahajan-git/Flipkart2.git
 
 Step:2. Build the code using your favourate build tool Maven/ANT
 	$ mvn install 
 
-Step:3. Create docker file for the application(gamutkart) with
+Step:3. Create docker file for the application(Flipkart) with
    	war file, tomcat,n...etc.
 
 	Dockerfile:
 	FROM tomcat:8.0
-	COPY gamutkart.war /usr/local/tomcat/webapps
+	COPY Flipkart.war /usr/local/tomcat/webapps
 	ENTRYPOINT /usr/local/tomcat/bin/startup.sh && bash
 
 Step:4. Build the Image:
-	$ docker build -t "swapnilhub/gamutkart" . (username_of_dockerhub/image-name)
+	$ docker build -t "swapnilhub/Flipkart" . (username_of_dockerhub/image-name)
 
 Step:5.
 Create the container manually using below command or user our 'create-env.sh' script. (Create docker containers using create_env.sh 10)
-	$ docker run --name gamutkart_server -d -it --rm nageshvkn/gamutkart /bin/bash
+	$ docker run --name Flipkart_server -d -it --rm nageshvkn/Flipkart /bin/bash
 
-Step:6. Launch the gamutkart application from all containers.
+Step:6. Launch the Flipkart application from all containers.
 
-	http://IP:8080/gamutkart
+	http://IP:8080/Flipkart
 
 ================
 
@@ -635,28 +635,28 @@ Step:6. Launch the gamutkart application from all containers.
 ===================
 
 Step:1. Clone the source code from Git or any other V.C.S
-	$ git clone https://github.com/swapnilmahajan-git/gamutkart2.git
+	$ git clone https://github.com/swapnilmahajan-git/Flipkart2.git
 
 Step:2. Build the code using your favourate build tool Maven/ANT
 	$ mvn install 
 
-Step:3. Create docker file for the application(gamutkart) with
+Step:3. Create docker file for the application(Flipkart) with
    	war file, tomcat,n...etc.
 
 	Dockerfile:
 	FROM tomcat:8.0
-	COPY gamutkart.war /usr/local/tomcat/webapps
+	COPY Flipkart.war /usr/local/tomcat/webapps
 	ENTRYPOINT /usr/local/tomcat/bin/startup.sh && bash
 
 Step:4. Build the Image:
-	$ docker build -t "swapnilhub/gamutkart-img" . (username/imagename)
+	$ docker build -t "swapnilhub/Flipkart-img" . (username/imagename)
 
 Step:5. Write one shell script file for environment(create-env.sh)
 	-
 	-	
 	-
 
-Step:6. Create environment using shell script. Run the below command in project directory.(ex.cd/home/swapnil/Documents/gamutkart2/$./create-env.sh)
+Step:6. Create environment using shell script. Run the below command in project directory.(ex.cd/home/swapnil/Documents/Flipkart2/$./create-env.sh)
 	$ ./create-env.sh
 
 Step:7. Inspect IPaddress(get all IP address for attaching to load balancer)
@@ -705,7 +705,7 @@ Step:1. Create one job in jenkins.(we can run this job using docker integration)
 
 # If we want to create temporary container using create-env.sh file, then use this following command in env.sh file (use --fm in command)
  
-	docker run --name www.gamutkart$i -d --rm -it swapnilhub/test-image /bin/bash
+	docker run --name www.Flipkart$i -d --rm -it swapnilhub/test-image /bin/bash
 
 
 
@@ -737,7 +737,7 @@ Run docker command without sudo.
 		$ sudo groupadd docker
 
 	2. Add your user to this group
-		$ sudo usermod -aG docker gamut
+		$ sudo usermod -aG docker swapnil
 
 	3. Logout and Login back so that your group membership
 	   is re-evaluated.
@@ -750,8 +750,8 @@ Run docker command without sudo.
 	
 	6. You can use 'gpasswd' command to remove the user from the group or add the 
 	   User to the group.
-		$ sudo gpasswd -d gamut docker
-		$ sudo gpasswd -a gamut docker
+		$ sudo gpasswd -d swapnil docker
+		$ sudo gpasswd -a swapnil docker
 
 # Note :- Suppose if you are getting error like below after adding user in sudo
 		WARNING: Error loading config file: /home/swapnil/.docker/config.json: stat /home/swapnil/.docker/config.json: permission denied
@@ -784,10 +784,10 @@ Misc:
 $ docker cp filename contaier_name:/target/path/of/container
 
 # How to set Environment variable in a container?
-	ENV JAVA_HOME /home/gamut/Distros/jdk1.8.0_191
+	ENV JAVA_HOME /home/swapnil/Distros/jdk1.8.0_191
 
 # How do you log into a container automatically using a particular user 
-	USER gamut
+	USER swapnil
 
 Extras:
 docker volumes

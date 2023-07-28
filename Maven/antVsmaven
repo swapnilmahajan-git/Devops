@@ -14,13 +14,6 @@ ANT:
 
 5. Ant is a build tool.
 
-6. ANT is very simple and suitable if we have to do lot of customizations. I think that's why ANT is also used in lot of projects.
-
-7. Using ANT we can't generate a site for our project with administration information by default.
-
-8. No default mechanism to reuse built artifacts.
-
-9. Troubleshooting is very easy as we know  better about our build code.(Since we write everything)
 
 
 

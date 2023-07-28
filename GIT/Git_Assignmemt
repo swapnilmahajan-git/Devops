@@ -1,0 +1,9 @@
+1)
+Create new repository and clone newly created repository and create one index.html file and push into repository.Create new branch and modify index.html file and merged into master branch. 
+Again modify index.html file and push into repository and create pull request and merged into master branch.
+
+2)
+Create new repository clone newly created repository and create 5 files and pushed into repository.
+and list only filnames using git diff commands.
+
+

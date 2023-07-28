@@ -1,4 +1,15 @@
 FROM ubuntu:16.04
+
 RUN apt-get update 
-RUN apt-get install -y openssh-server
-RUN apt-get install -y vim
+
+# Install Nginx
+RUN apt-get -y update && apt-get -y install nginx
+
+# Copy the Nginx config
+COPY default /etc/nginx/sites-available/default
+
+# Expose the port for access
+EXPOSE 80/tcp
+
+# Run the Nginx server
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
